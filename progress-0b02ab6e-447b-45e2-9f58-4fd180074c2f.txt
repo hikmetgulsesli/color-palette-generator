@@ -1,5 +1,19 @@
 ## Progress Log
 
+### US-004: Build PaletteDisplay component (DONE)
+- Created src/components/PaletteDisplay.tsx with main palette display
+- Props: palette (array of 5 PaletteColor objects), onLockToggle callback, optional onCopy callback
+- Renders exactly 5 ColorSwatch components in horizontal row (desktop) or vertical stack (mobile < 768px)
+- PaletteColor interface: { id, color, locked }
+- Responsive layout using CSS flexbox with media queries
+- Pads with default colors if palette has fewer than 5, truncates if more than 5
+- Each swatch wrapper has unique data-testid for reliable testing
+- Full accessibility: role="region", aria-label="Color palette"
+- Created src/components/PaletteDisplay.css with responsive styling
+- 12 unit tests covering: 5 swatches rendered, unique colors displayed, lock state persistence, callbacks, edge cases
+- Added @testing-library/user-event dependency for interaction testing
+- Typecheck passes, build passes, all 140 tests pass
+
 ### US-003: Build ColorSwatch component (DONE)
 - Created src/components/ColorSwatch.tsx with reusable color swatch component
 - Props: color (hex string), locked (boolean), onLockToggle (callback), onCopy (optional callback)
@@ -41,6 +55,7 @@
 - RgbColor: { r: number, g: number, b: number } (0-255)
 - HslColor: { h: number, s: number, l: number } (h: 0-360 deg, s/l: 0-100 %)
 - Hex: 7-char lowercase string "#rrggbb"
+- PaletteColor: { id: string, color: string, locked: boolean }
 
 ### Design Tokens (from index.css :root)
 - --primary: #22d3ee, --primary-hover: #06b6d4
