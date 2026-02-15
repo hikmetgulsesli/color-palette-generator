@@ -1,5 +1,17 @@
 ## Progress Log
 
+### US-009: Build Header component (DONE)
+- Created src/components/Header.tsx with app header component
+- Props: colors (array of hex strings), optional className
+- App title: 'Palette Generator' displayed with Space Grotesk heading font
+- Includes ExportMenu component for palette export functionality
+- Responsive layout with proper spacing using design tokens
+- Uses role="banner" for semantic accessibility
+- Created src/components/Header.css with dark theme styling
+- Mobile responsive: adjusts padding and font size on small screens
+- 8 unit tests covering: rendering, title display, ExportMenu integration, className prop, accessibility, edge cases
+- Typecheck passes, build passes, all 247 tests pass
+
 ### US-008: Build ExportMenu component (DONE)
 - Created src/components/ExportMenu.tsx with dropdown export menu
 - Props: colors (array of 5 hex strings), optional className
