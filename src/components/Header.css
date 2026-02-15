@@ -1,0 +1,54 @@
+.app-header {
+  width: 100%;
+  padding: var(--space-lg) var(--space-xl);
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-header-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .app-header {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .app-header-content {
+    gap: var(--space-md);
+  }
+
+  .app-header-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .app-header {
+    transition: none;
+  }
+}
