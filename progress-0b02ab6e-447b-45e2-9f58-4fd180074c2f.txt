@@ -1,5 +1,18 @@
 ## Progress Log
 
+### US-005: Implement palette generation hook (DONE)
+- Created src/hooks/usePalette.ts with palette state management hook
+- State: colors array with { hex: string, locked: boolean } objects (ColorSlot interface)
+- Returns: { colors, generatePalette, lockColor, unlockColor }
+- generatePalette(): keeps locked colors unchanged, generates random colors for unlocked slots
+- lockColor(index): locks color at given index
+- unlockColor(index): unlocks color at given index
+- Supports 5-color palette (PALETTE_SIZE = 5)
+- Initializes with random palette on mount via createInitialPalette()
+- Includes localStorage persistence (loaded from US-006 work)
+- 51 unit tests covering: return shape, generatePalette, lock/unlock, edge cases, persistence
+- Typecheck passes, build passes, all 246 tests pass
+
 ### US-009: Build Header component (DONE)
 - Created src/components/Header.tsx with app header component
 - Props: colors (array of hex strings), optional className
