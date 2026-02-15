@@ -1,5 +1,15 @@
 ## Progress Log
 
+### US-006: Add localStorage persistence (DONE)
+- Modified usePalette hook to save/load palette state from localStorage
+- Storage key: 'color-palette-generator-palette'
+- Loads saved palette on mount, saves on every palette change
+- Validation: isValidPalette checks structure, hex format, and types
+- Graceful degradation: handles localStorage unavailable (private browsing, quota exceeded)
+- Exported helpers for testing: STORAGE_KEY, isValidPalette, loadPalette, savePalette, isStorageAvailable
+- 51 unit tests covering: save/load, validation, persistence across operations, error handling, edge cases
+- Typecheck passes, build passes, all 191 tests pass
+
 ### US-004: Build PaletteDisplay component (DONE)
 - Created src/components/PaletteDisplay.tsx with main palette display
 - Props: palette (array of 5 PaletteColor objects), onLockToggle callback, optional onCopy callback
@@ -36,6 +46,14 @@
 - Typecheck passes, build passes, all 101 tests pass
 
 ## Codebase Patterns
+
+### localStorage Persistence Pattern
+- Use STORAGE_KEY constant for consistent key naming
+- Validate loaded data with type guards (isValidPalette)
+- Check storage availability with feature detection (isStorageAvailable)
+- Fail silently on storage errors (quota exceeded, private mode)
+- Save on every state change via useEffect
+- Load on initial mount, fallback to defaults if invalid/missing
 
 ### Project Structure
 - src/lib/ — pure utility modules (no React, no DOM)
