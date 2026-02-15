@@ -1,5 +1,19 @@
 ## Progress Log
 
+### US-008: Build ExportMenu component (DONE)
+- Created src/components/ExportMenu.tsx with dropdown export menu
+- Props: colors (array of 5 hex strings), optional className
+- Export formats: CSS Variables, JSON, Tailwind Config, ASE (Adobe)
+- CSS export includes all 5 colors as --color-1 through --color-5 (lowercase hex)
+- Uses Lucide React icons: Download, Check, FileCode, FileJson, Palette, FileType
+- Features: click outside to close, Escape key to close, focus management
+- Shows "Copied!" toast feedback for 2 seconds after successful export
+- Copies formatted content directly to clipboard using navigator.clipboard.writeText
+- Created src/components/ExportMenu.css with dark theme styling
+- Mobile responsive: dropdown becomes bottom sheet on small screens
+- 21 unit tests covering: all 4 formats, clipboard copying, success feedback, accessibility, keyboard navigation, edge cases
+- Typecheck passes, build passes, all 239 tests pass
+
 ### US-006: Add localStorage persistence (DONE)
 - Modified usePalette hook to save/load palette state from localStorage
 - Storage key: 'color-palette-generator-palette'
@@ -46,6 +60,15 @@
 - Typecheck passes, build passes, all 101 tests pass
 
 ## Codebase Patterns
+
+### Dropdown Menu Pattern
+- Use useRef for menu container and button for focus management
+- Close on click outside using mousedown event listener
+- Close on Escape key and return focus to trigger button
+- Use aria-expanded, aria-haspopup, role="menu", role="menuitem" for accessibility
+- Animate with CSS keyframes (fade-in, slide-up for mobile)
+- Position absolute with z-index for overlay
+- Mobile: fixed positioning with bottom sheet pattern
 
 ### localStorage Persistence Pattern
 - Use STORAGE_KEY constant for consistent key naming
