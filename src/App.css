@@ -1,21 +1,52 @@
-main {
+/* ============================================================
+   App Layout - Color Palette Generator
+   ============================================================ */
+
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.app-header {
-  padding: var(--space-3xl) var(--space-xl) var(--space-xl);
-  text-align: center;
-}
-
-.app-header h1 {
+  background-color: var(--surface);
   color: var(--text);
-  margin-bottom: var(--space-sm);
 }
 
-.app-subtitle {
-  color: var(--text-muted);
-  font-size: 1.125rem;
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.app-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .app-container {
+    max-width: 960px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .app-main {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .app-container {
+    gap: var(--space-xl);
+  }
 }
