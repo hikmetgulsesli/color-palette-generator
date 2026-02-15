@@ -1,0 +1,62 @@
+## Progress Log
+
+### US-003: Build ColorSwatch component (DONE)
+- Created src/components/ColorSwatch.tsx with reusable color swatch component
+- Props: color (hex string), locked (boolean), onLockToggle (callback), onCopy (optional callback)
+- Features: color preview rectangle, hex value display, lock/unlock toggle, copy to clipboard
+- Uses Lucide React icons (Lock, Unlock, Copy, Check)
+- Auto-detects text color (light/dark) based on background luminance using isDarkColor
+- Shows checkmark animation on copy success with 2-second feedback
+- Lock indicator dot and border highlight when locked
+- Full accessibility: aria-label, aria-pressed, focus-visible rings
+- Created src/components/ColorSwatch.css with dark theme styling
+- 27 unit tests covering rendering, lock functionality, copy functionality, accessibility, edge cases
+- Typecheck passes, build passes, all 128 tests pass
+
+### US-002: Create color generation utilities (DONE)
+- Created src/lib/colorUtils.ts with pure utility functions
+- Functions: generateRandomColor, hexToRgb, rgbToHex, rgbToHsl, hslToRgb, hexToHsl, hslToHex, formatRgb, formatHsl, relativeLuminance, isDarkColor
+- Validation: isValidHex, expandShortHex with TypeError on invalid input
+- Input clamping: clampByte (0-255), clampDegrees (0-360), clampPercent (0-100)
+- 53 unit tests covering all functions, edge cases, roundtrips, and purity checks
+- Typecheck passes, build passes, all 101 tests pass
+
+## Codebase Patterns
+
+### Project Structure
+- src/lib/ — pure utility modules (no React, no DOM)
+- src/components/ — React components with co-located CSS and tests
+- src/test/ — infrastructure/setup tests
+- src/lib/*.test.ts — co-located unit tests for utilities
+- src/components/*.test.tsx — co-located unit tests for components
+
+### Component Patterns
+- Components use CSS custom properties for dynamic values (e.g., --hover-bg)
+- Props interface exported for external use
+- Test IDs used for reliable test selection (data-testid)
+- Icons from Lucide React with aria-hidden="true"
+- Gradient overlays for text legibility on variable backgrounds
+
+### Color Types
+- RgbColor: { r: number, g: number, b: number } (0-255)
+- HslColor: { h: number, s: number, l: number } (h: 0-360 deg, s/l: 0-100 %)
+- Hex: 7-char lowercase string "#rrggbb"
+
+### Design Tokens (from index.css :root)
+- --primary: #22d3ee, --primary-hover: #06b6d4
+- --accent: #a3e635
+- --surface: #18181b, --surface-alt: #27272a
+- --text: #fafafa, --text-muted: #a1a1aa
+- --border: #3f3f46
+- --success: #4ade80, --error: #f87171, --warning: #fbbf24
+- Fonts: Space Grotesk (headings), DM Sans (body)
+
+### Testing
+- Vitest with jsdom environment
+- Global test APIs (describe, it, expect)
+- Setup: @testing-library/jest-dom/vitest
+- Test files: src/**/*.{test,spec}.{ts,tsx}
+
+### Build
+- pnpm run build = tsc && vite build
+- Dev server on port 3510 (strictPort)

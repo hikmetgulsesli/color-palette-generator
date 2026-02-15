@@ -1,0 +1,27 @@
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:966:11)
+    at Socket._write (node:net:978:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Socket.Writable.write (node:internal/streams/writable:510:10)
+    at Console.value (node:internal/console/constructor:298:16)
+    at Console.log (node:internal/console/constructor:384:26)
+    at Logger.log (file:///home/setrox/color-palette-generator/node_modules/.pnpm/vitest@4.0.18_@types+node@25.2.3_jsdom@28.0.0/node_modules/vitest/dist/chunks/cli-api.B7PN_QUv.js:6515:16)
+Emitted 'error' event on Socket instance at:
+    at Socket.onerror (node:internal/streams/readable:1028:14)
+    at Socket.emit (node:events:519:28)
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -32,
+  code: 'EPIPE',
+  syscall: 'write'
+}
+
+Node.js v22.22.0

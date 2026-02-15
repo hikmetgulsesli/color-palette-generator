@@ -1,0 +1,121 @@
+.color-swatch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 160px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.color-swatch:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.color-swatch[data-locked="true"] {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.color-swatch-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.1) 60%,
+    transparent 100%
+  );
+}
+
+.color-swatch-value {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.color-swatch-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.color-swatch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.color-swatch-button:hover {
+  background-color: var(--hover-bg, rgba(255, 255, 255, 0.15));
+}
+
+.color-swatch-button:active {
+  transform: scale(0.92);
+}
+
+.color-swatch-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.color-swatch-icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.color-swatch-icon-check {
+  animation: check-pop var(--duration-normal) var(--ease-out);
+}
+
+@keyframes check-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.color-swatch-lock-indicator {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .color-swatch,
+  .color-swatch-button,
+  .color-swatch-icon-check {
+    animation: none;
+    transition: none;
+  }
+}
