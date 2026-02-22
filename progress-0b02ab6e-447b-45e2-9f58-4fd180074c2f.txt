@@ -138,6 +138,19 @@
 - Setup: @testing-library/jest-dom/vitest
 - Test files: src/**/*.{test,spec}.{ts,tsx}
 
+### US-011: Add Toast notification system (DONE)
+- Created src/components/Toast.tsx with toast notification component
+- Props: message (string), variant ('success' | 'error'), visible (boolean), onDismiss (callback)
+- Features: auto-dismiss after 2 seconds, success/error variants, CSS entrance/exit animations
+- Positioned at bottom-center using fixed positioning
+- Uses Lucide React icons: Check (success), AlertCircle (error)
+- Full accessibility: role="status", aria-live="polite" for screen reader announcements
+- Created src/components/Toast.css with dark theme styling
+- Animation: toast-enter and toast-exit keyframes with translateY transform
+- Respects prefers-reduced-motion media query
+- 19 unit tests covering: rendering, variants, auto-dismiss, accessibility, edge cases
+- Typecheck passes, build passes, all 277 tests pass
+
 ### Build
 - pnpm run build = tsc && vite build
 - Dev server on port 3510 (strictPort)
